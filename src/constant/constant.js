@@ -1,5 +1,5 @@
-export const SERVER_PORT = 5010;
-// export const SERVER_PORT = 5000;
+// export const SERVER_PORT = 5010;
+export const SERVER_PORT = 5000;
 export const API_URL_Base = `http://localhost:${SERVER_PORT}/api`;
 export const API_URL_LOGIN = `http://localhost:${SERVER_PORT}/api/login`;
 export const API_URL_ARTICLES = `http://localhost:${SERVER_PORT}/api/articles`;

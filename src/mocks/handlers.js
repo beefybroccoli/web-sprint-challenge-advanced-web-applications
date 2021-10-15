@@ -74,11 +74,11 @@ function remove(req, res, ctx) {
 }
 
 export const handlers = [
-  rest.post("http://localhost:5010/api/login", login),
-  rest.post("http://localhost:5010/api/logout", logout),
-  rest.get("http://localhost:5010/api/articles", getAll),
-  rest.get("http://localhost:5010/api/articles/:id", getById),
-  rest.post("http://localhost:5010/api/articles", create),
-  rest.put("http://localhost:5010/api/articles/:id", edit),
-  rest.delete("http://localhost:5010/api/articles/:id", remove),
+  rest.post("http://localhost:5000/api/login", login),
+  rest.post("http://localhost:5000/api/logout", logout),
+  rest.get("http://localhost:5000/api/articles", getAll),
+  rest.get("http://localhost:5000/api/articles/:id", getById),
+  rest.post("http://localhost:5000/api/articles", create),
+  rest.put("http://localhost:5000/api/articles/:id", edit),
+  rest.delete("http://localhost:5000/api/articles/:id", remove),
 ];

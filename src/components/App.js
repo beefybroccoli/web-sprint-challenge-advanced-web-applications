@@ -13,6 +13,10 @@ const App = () => {
   const initialState = { token: "" };
   const [stateGlobal, set_stateGlobal] = useState(initialState);
 
+  useEffect(() => {
+    localStorage.setItem("token", "");
+  }, []);
+
   return (
     <AppContainer>
       <LambdaHeader />
