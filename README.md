@@ -71,7 +71,7 @@ In this project, you will demonstrate your mastery of these skills by creating *
 
 ### pass all MVP automated test (milestone-5)
 
-### Advanced Testing
+### Advanced Testing (milestone-6)
 > *Add the following tests within Article.test.js.*
 * [ ] Build a test that shows the `Article` component, given the correct props, can render without errors.
 * [ ] Build a test that shows that when a correctly formatted article is passed into the `Article` component, the correct headline, author, summary and body are displayed.
