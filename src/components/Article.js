@@ -2,10 +2,9 @@ import React from "react";
 import styled from "styled-components";
 import moment from "moment";
 
-
 const Article = (props) => {
   const { article, handleDelete, handleEditSelect } = props;
-
+  // console.log("Article.js - article = ", article);
   return (
     <div data-testid="article">
       <ArticleStyle>

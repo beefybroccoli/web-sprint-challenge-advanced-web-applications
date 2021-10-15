@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Article from "./Article";
 import EditForm from "./EditForm";
@@ -42,7 +42,6 @@ const View = (props) => {
   };
 
   useEffect(() => {
-    // articleService(cb_getToken())
     articleService(localStorage.getItem("token"))
       .then((res) => {
         setArticles(res.data);
