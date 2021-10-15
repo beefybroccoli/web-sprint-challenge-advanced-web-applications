@@ -11,7 +11,6 @@ const Login = () => {
     set_stateForm({ ...stateForm, [event.target.name]: event.target.value });
   };
   const history = useHistory();
-  const { cb_setToken, cb_hasToken, cb_getToken } = useContext(ContextObject);
 
   const cb_onSubmit = (event) => {
     event.preventDefault();
@@ -20,7 +19,8 @@ const Login = () => {
       password: stateForm.password,
     })
       .then((res) => {
-        cb_setToken(res.data.token);
+        // cb_setToken(res.data.token);
+        localStorage.setItem("token", res.data.token);
         history.push("/view");
       })
       .catch((error) => {

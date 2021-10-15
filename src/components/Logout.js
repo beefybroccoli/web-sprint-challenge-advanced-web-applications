@@ -3,12 +3,14 @@ import ContextObject from "../context/context";
 import logoutService from "../services/logoutServices";
 
 const Logout = () => {
-  const { cb_getToken, cb_setToken, cb_hasToken } = useContext(ContextObject);
+  // const { cb_getToken, cb_setToken, cb_hasToken } = useContext(ContextObject);
 
   useEffect(() => {
-    logoutService(cb_getToken())
+    // logoutService(cb_getToken())
+    logoutService(localStorage.getItem("token"))
       .then((res) => {
-        cb_setToken("");
+        // cb_setToken("");
+        localStorage.setItem("token", "");
       })
       .catch((error) => {
         console.log("error = ", error);
@@ -17,8 +19,12 @@ const Logout = () => {
 
   return (
     <div>
-      <p>token = {cb_hasToken() ? cb_getToken() : "No Token"}</p>
-      <p>cb_hasToken() return {JSON.stringify(cb_hasToken())}</p>
+      <p>
+        token ={" "}
+        {localStorage.getItem("token")
+          ? localStorage.getItem("token")
+          : "No Token"}
+      </p>
     </div>
   );
 };

@@ -10,10 +10,10 @@ const View = (props) => {
   const [articles, setArticles] = useState([]);
   const [editing, setEditing] = useState(false);
   const [editId, setEditId] = useState();
-  const { cb_getToken, cb_hasToken } = useContext(ContextObject);
 
   const handleDelete = (id) => {
-    deleteArticleByIdService(id, cb_getToken())
+    // deleteArticleByIdService(id, cb_getToken())
+    deleteArticleByIdService(id, localStorage.getItem("token"))
       .then((res) => {
         setArticles(res.data);
       })
@@ -23,7 +23,8 @@ const View = (props) => {
   };
 
   const handleEdit = (article) => {
-    replaceArticleByIdService(cb_getToken(), article)
+    // replaceArticleByIdService(cb_getToken(), article)
+    replaceArticleByIdService(localStorage("token"), article)
       .then((res) => {
         setArticles(res.data);
       })
@@ -42,7 +43,8 @@ const View = (props) => {
   };
 
   useEffect(() => {
-    articleService(cb_getToken())
+    // articleService(cb_getToken())
+    articleService(localStorage.getItem("token"))
       .then((res) => {
         setArticles(res.data);
       })
@@ -56,8 +58,13 @@ const View = (props) => {
       <HeaderContainer>View Articles</HeaderContainer>
       <ContentContainer flexDirection="row">
         <ArticleContainer>
-          <p>token = {cb_hasToken() ? cb_getToken() : "No Token"}</p>
-          <p>cb_hasToken() return {JSON.stringify(cb_hasToken())}</p>
+          <p>
+            token ={" "}
+            {localStorage.getItem("token")
+              ? localStorage.getItem("token")
+              : "No Token"}
+          </p>
+
           {articles.map((article) => {
             return (
               <ArticleDivider key={article.id}>

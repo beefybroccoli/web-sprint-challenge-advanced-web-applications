@@ -12,35 +12,23 @@ import ContextObject from "../context/context";
 const App = () => {
   const initialState = { token: "" };
   const [stateGlobal, set_stateGlobal] = useState(initialState);
-  const cb_setToken = (input_token) => {
-    set_stateGlobal({ ...stateGlobal, token: input_token });
-  };
-  const cb_hasToken = () => {
-    // console.log("token = ", cb_getToken());
-    // console.log("return = ", stateGlobal.token !== "");
-    return stateGlobal.token !== "";
-  };
-  const cb_getToken = () => {
-    return stateGlobal.token;
-  };
+
   return (
     <AppContainer>
-      <ContextObject.Provider value={{ cb_getToken, cb_setToken, cb_hasToken }}>
-        <LambdaHeader />
-        <Header />
-        <RouteContainer>
-          <Switch>
-            <Route exact path="/">
-              <Login />
-            </Route>
-            <Route path="/login">
-              <Login />
-            </Route>
-            <PrivateRoute path="/view" component={View} />
-            <PrivateRoute path="/logout" component={Logout} />
-          </Switch>
-        </RouteContainer>
-      </ContextObject.Provider>
+      <LambdaHeader />
+      <Header />
+      <RouteContainer>
+        <Switch>
+          <Route exact path="/">
+            <Login />
+          </Route>
+          <Route path="/login">
+            <Login />
+          </Route>
+          <PrivateRoute path="/view" component={View} />
+          <PrivateRoute path="/logout" component={Logout} />
+        </Switch>
+      </RouteContainer>
     </AppContainer>
   );
 };
