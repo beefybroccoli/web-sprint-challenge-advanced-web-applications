@@ -30,7 +30,7 @@ const Login = () => {
   };
 
   useEffect(() => {
-    set_stateForm({ ...stateForm, username: "Lambda", password: "School" });
+    set_stateForm({ ...stateForm, username: "Lambdass", password: "School" });
   }, []);
 
   return (
