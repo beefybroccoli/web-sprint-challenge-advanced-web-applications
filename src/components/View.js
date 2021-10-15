@@ -1,9 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import styled from "styled-components";
-
 import Article from "./Article";
 import EditForm from "./EditForm";
 import ContextObject from "../context/context";
+import articleService from "../services/articleServices";
 
 const View = (props) => {
   const [articles, setArticles] = useState([]);
@@ -23,6 +23,17 @@ const View = (props) => {
   const handleEditCancel = () => {
     setEditing(false);
   };
+
+  useEffect(() => {
+    articleService(cb_getToken())
+      .then((res) => {
+        // console.log("res = ", res);
+        setArticles(res.data);
+      })
+      .catch((error) => {
+        // console.log("error = ", error);
+      });
+  }, []);
 
   return (
     <ComponentContainer>

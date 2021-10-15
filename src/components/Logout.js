@@ -1,8 +1,20 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import ContextObject from "../context/context";
+import logoutService from "../services/logoutServices";
 
 const Logout = () => {
-  const { cb_getToken, cb_hasToken } = useContext(ContextObject);
+  const { cb_getToken, cb_setToken, cb_hasToken } = useContext(ContextObject);
+
+  useEffect(() => {
+    logoutService(cb_getToken())
+      .then((res) => {
+        // console.log("res = ", res);
+        cb_setToken("");
+      })
+      .catch((error) => {
+        // console.log(error);
+      });
+  }, []);
 
   return (
     <div>
