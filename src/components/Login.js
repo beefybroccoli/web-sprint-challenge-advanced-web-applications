@@ -11,7 +11,7 @@ const Login = () => {
     set_stateForm({ ...stateForm, [event.target.name]: event.target.value });
   };
   const history = useHistory();
-  const { cb_setToken, cb_getToken, cb_hasToken } = useContext(ContextObject);
+  const { cb_setToken } = useContext(ContextObject);
 
   const cb_onSubmit = (event) => {
     event.preventDefault();
@@ -24,13 +24,13 @@ const Login = () => {
         history.push("/view");
       })
       .catch((error) => {
-        set_stateForm({ ...stateForm, error: JSON.stringify(error) });
+        set_stateForm({ ...stateForm, error: "wrong username or password" });
       });
     set_stateForm(initialState);
   };
 
   useEffect(() => {
-    set_stateForm({ ...stateForm, username: "Lambda", password: "School" });
+    // set_stateForm({ ...stateForm, username: "Lambda", password: "School" });
   }, []);
 
   return (

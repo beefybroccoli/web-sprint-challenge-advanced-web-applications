@@ -38,9 +38,6 @@ const App = () => {
             </Route>
             <PrivateRoute path="/view" component={View} />
             <PrivateRoute path="/logout" component={Logout} />
-            <Route>
-              <Redirect path="/" />
-            </Route>
           </Switch>
         </RouteContainer>
       </ContextObject.Provider>
