@@ -4,6 +4,7 @@ import Article from "./Article";
 import EditForm from "./EditForm";
 import ContextObject from "../context/context";
 import articleService from "../services/articleServices";
+import deleteArticleByIdService from "../services/deleteArticleByIdService";
 
 const View = (props) => {
   const [articles, setArticles] = useState([]);
@@ -11,9 +12,20 @@ const View = (props) => {
   const [editId, setEditId] = useState();
   const { cb_getToken, cb_hasToken } = useContext(ContextObject);
 
-  const handleDelete = (id) => {};
+  const handleDelete = (id) => {
+    deleteArticleByIdService(id, cb_getToken())
+      .then((res) => {
+        // console.log("res = ", res);
+        setArticles(res.data);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
-  const handleEdit = (article) => {};
+  const handleEdit = (article) => {
+    // .then(()=>{}).catch(()=>{});
+  };
 
   const handleEditSelect = (id) => {
     setEditing(true);
@@ -27,7 +39,6 @@ const View = (props) => {
   useEffect(() => {
     articleService(cb_getToken())
       .then((res) => {
-        // console.log("res = ", res);
         setArticles(res.data);
       })
       .catch((error) => {
