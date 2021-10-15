@@ -8,11 +8,10 @@ const Logout = () => {
   useEffect(() => {
     logoutService(cb_getToken())
       .then((res) => {
-        // console.log("res = ", res);
         cb_setToken("");
       })
       .catch((error) => {
-        // console.log(error);
+        console.log("error = ", error);
       });
   }, []);
 

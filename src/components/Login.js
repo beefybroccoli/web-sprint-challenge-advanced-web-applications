@@ -15,25 +15,21 @@ const Login = () => {
 
   const cb_onSubmit = (event) => {
     event.preventDefault();
-    // console.log("stateForm = ", stateForm);
     loginService({
       username: stateForm.username,
       password: stateForm.password,
     })
       .then((res) => {
-        // console.log("res = ", res);
         cb_setToken(res.data.token);
         history.push("/view");
       })
       .catch((error) => {
-        // console.log("error = ", error);
         set_stateForm({ ...stateForm, error: JSON.stringify(error) });
       });
     set_stateForm(initialState);
   };
 
   useEffect(() => {
-    //debugging code .............................................
     set_stateForm({ ...stateForm, username: "Lambda", password: "School" });
   }, []);
 
