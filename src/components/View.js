@@ -24,7 +24,7 @@ const View = (props) => {
 
   const handleEdit = (article) => {
     // replaceArticleByIdService(cb_getToken(), article)
-    replaceArticleByIdService(localStorage("token"), article)
+    replaceArticleByIdService(localStorage.getItem("token"), article)
       .then((res) => {
         setArticles(res.data);
       })

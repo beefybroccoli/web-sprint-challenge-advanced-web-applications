@@ -38,7 +38,12 @@ const Login = () => {
       <ModalContainer>
         <h1>Welcome to Blogger Pro</h1>
         <h2>Please enter your account information.</h2>
-        <p>token = {cb_hasToken() ? cb_getToken() : "No Token"}</p>
+        <p>
+          token ={" "}
+          {localStorage.getItem("token")
+            ? localStorage.getItem("token")
+            : "No Token"}
+        </p>
         <form onSubmit={cb_onSubmit}>
           <Label>
             Username :

@@ -14,7 +14,6 @@ const initialArticle = {
 const EditForm = (props) => {
   const [article, setArticle] = useState(initialArticle);
   const { handleEdit, handleEditCancel, editId } = props;
-  const { cb_getToken } = useContext(ContextObject);
 
   const handleChange = (e) => {
     setArticle({
@@ -34,7 +33,8 @@ const EditForm = (props) => {
   };
 
   useEffect(() => {
-    getArticleByIdService(cb_getToken(), editId)
+    // getArticleByIdService(cb_getToken(), editId)
+    getArticleByIdService(localStorage.getItem("token"), editId)
       .then((res) => {
         // console.log("res = ", res);
         setArticle(res.data);

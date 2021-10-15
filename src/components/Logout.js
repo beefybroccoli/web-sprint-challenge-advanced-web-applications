@@ -1,16 +1,16 @@
-import React, { useContext, useEffect } from "react";
-import ContextObject from "../context/context";
+import React, { useEffect } from "react";
 import logoutService from "../services/logoutServices";
+import { useHistory } from "react-router-dom";
 
 const Logout = () => {
-  // const { cb_getToken, cb_setToken, cb_hasToken } = useContext(ContextObject);
-
+  const history = useHistory();
   useEffect(() => {
     // logoutService(cb_getToken())
     logoutService(localStorage.getItem("token"))
       .then((res) => {
         // cb_setToken("");
         localStorage.setItem("token", "");
+        history.push("/");
       })
       .catch((error) => {
         console.log("error = ", error);
