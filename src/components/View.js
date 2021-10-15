@@ -25,7 +25,6 @@ const View = (props) => {
   const handleEdit = (article) => {
     replaceArticleByIdService(cb_getToken(), article)
       .then((res) => {
-        // console.log("res = ", res);
         setArticles(res.data);
       })
       .catch((error) => {
@@ -48,7 +47,7 @@ const View = (props) => {
         setArticles(res.data);
       })
       .catch((error) => {
-        // console.log("error = ", error);
+        console.log("error = ", error);
       });
   }, []);
 
