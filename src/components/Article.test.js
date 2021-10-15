@@ -125,31 +125,26 @@ test("executes handleDelete when the delete button is pressed", () => {
       "Triple-digit temperatures led to a spike in demand across the region.",
     body: "Inside the attic of a one-story gray house in a Seattle suburb last week, Jeff Bryson gingerly strapped copper piping across the rafters while wearing a white face mask and a headlamp. The temperature was about 110 degrees in the tight space, which was covered in insulation dust. His work was meant to cool the rest of the home.",
   };
+  const handleDelete = () => {
+    return article.id;
+  };
   render(
     <Article
       key={article.id}
       article={article}
-      handleDelete={null}
+      handleDelete={handleDelete}
       handleEditSelect={null}
     />
   );
 
   //act
   const tempArticle = screen.getByTestId("article");
-  const h1 = screen.getByTestId("headline");
-  const author = screen.getByTestId("author");
-  //   console.log("tempArticle = ", tempArticle);
-  console.log(
-    "h1.textContent =",
-    h1.textContent === "" ? "(no text found)" : h1.textContent
-  );
-  console.log(
-    "author =",
-    author.textContent === "" ? "(no text found)" : author.textContent
-  );
+  const deleteButton = screen.getByTestId("deleteButton");
+  userEvent.click(deleteButton);
+  const returnID = handleDelete();
+
   //assert
-  expect(h1).toHaveTextContent(/less than half/i);
-  expect(author).toHaveTextContent(/associated press/i);
+  expect(returnID).toBe(article.id);
 });
 
 //Task List:
