@@ -5,10 +5,8 @@ import { useHistory } from "react-router-dom";
 const Logout = () => {
   const history = useHistory();
   useEffect(() => {
-    // logoutService(cb_getToken())
     logoutService(localStorage.getItem("token"))
       .then((res) => {
-        // cb_setToken("");
         localStorage.setItem("token", "");
         history.push("/");
       })
@@ -17,16 +15,7 @@ const Logout = () => {
       });
   }, []);
 
-  return (
-    <div>
-      <p>
-        token ={" "}
-        {localStorage.getItem("token")
-          ? localStorage.getItem("token")
-          : "No Token"}
-      </p>
-    </div>
-  );
+  return <div></div>;
 };
 
 export default Logout;

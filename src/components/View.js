@@ -2,7 +2,6 @@ import React, { useState, useContext, useEffect } from "react";
 import styled from "styled-components";
 import Article from "./Article";
 import EditForm from "./EditForm";
-import ContextObject from "../context/context";
 import articleService from "../services/articleServices";
 import deleteArticleByIdService from "../services/deleteArticleByIdService";
 import replaceArticleByIdService from "../services/replaceArticleByIdService";
@@ -58,13 +57,6 @@ const View = (props) => {
       <HeaderContainer>View Articles</HeaderContainer>
       <ContentContainer flexDirection="row">
         <ArticleContainer>
-          <p>
-            token ={" "}
-            {localStorage.getItem("token")
-              ? localStorage.getItem("token")
-              : "No Token"}
-          </p>
-
           {articles.map((article) => {
             return (
               <ArticleDivider key={article.id}>

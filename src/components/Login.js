@@ -2,7 +2,6 @@ import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
 import loginService from "../services/loginServices";
 import { useHistory } from "react-router-dom";
-import ContextObject from "../context/context";
 
 const Login = () => {
   const initialState = { username: "", password: "", error: "" };
@@ -19,7 +18,6 @@ const Login = () => {
       password: stateForm.password,
     })
       .then((res) => {
-        // cb_setToken(res.data.token);
         localStorage.setItem("token", res.data.token);
         history.push("/view");
       })
@@ -38,12 +36,7 @@ const Login = () => {
       <ModalContainer>
         <h1>Welcome to Blogger Pro</h1>
         <h2>Please enter your account information.</h2>
-        <p>
-          token ={" "}
-          {localStorage.getItem("token")
-            ? localStorage.getItem("token")
-            : "No Token"}
-        </p>
+
         <form onSubmit={cb_onSubmit}>
           <Label>
             Username :

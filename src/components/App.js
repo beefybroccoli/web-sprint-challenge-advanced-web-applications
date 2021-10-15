@@ -7,12 +7,8 @@ import LambdaHeader from "./LambdaHeader";
 import View from "./View";
 import Login from "./Login";
 import Logout from "./Logout";
-import ContextObject from "../context/context";
 
 const App = () => {
-  const initialState = { token: "" };
-  const [stateGlobal, set_stateGlobal] = useState(initialState);
-
   useEffect(() => {
     localStorage.setItem("token", "");
   }, []);
