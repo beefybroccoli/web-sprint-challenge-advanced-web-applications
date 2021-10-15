@@ -5,7 +5,7 @@ import EditForm from "./EditForm";
 import ContextObject from "../context/context";
 import articleService from "../services/articleServices";
 import deleteArticleByIdService from "../services/deleteArticleByIdService";
-import editArticleByIdService from "../services/editArticleByIdService";
+import replaceArticleByIdService from "../services/replaceArticleByIdService";
 const View = (props) => {
   const [articles, setArticles] = useState([]);
   const [editing, setEditing] = useState(false);
@@ -24,9 +24,11 @@ const View = (props) => {
   };
 
   const handleEdit = (article) => {
-    editArticleByIdService(article, cb_getToken())
+    console.log("new article = ", article);
+    replaceArticleByIdService(cb_getToken(), article)
       .then((res) => {
         console.log("res = ", res);
+        setArticles(res.data);
       })
       .catch((error) => {
         console.log("error ", error);

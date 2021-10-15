@@ -36,7 +36,7 @@ const EditForm = (props) => {
   useEffect(() => {
     getArticleByIdService(cb_getToken(), editId)
       .then((res) => {
-        console.log("res = ", res);
+        // console.log("res = ", res);
         setArticle(res.data);
       })
       .catch((error) => {

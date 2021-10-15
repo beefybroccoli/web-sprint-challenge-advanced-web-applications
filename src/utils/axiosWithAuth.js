@@ -6,7 +6,7 @@ const axiosWithAuth = (token) => {
     baseURL: API_URL_Base,
     headers: {
       authorization: token,
-    },
+    }
   });
 };
 
