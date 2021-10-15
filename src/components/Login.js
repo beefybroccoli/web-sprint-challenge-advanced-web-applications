@@ -11,7 +11,7 @@ const Login = () => {
     set_stateForm({ ...stateForm, [event.target.name]: event.target.value });
   };
   const history = useHistory();
-  const { cb_setToken } = useContext(ContextObject);
+  const { cb_setToken, cb_hasToken, cb_getToken } = useContext(ContextObject);
 
   const cb_onSubmit = (event) => {
     event.preventDefault();
@@ -30,7 +30,7 @@ const Login = () => {
   };
 
   useEffect(() => {
-    // set_stateForm({ ...stateForm, username: "Lambda", password: "School" });
+    set_stateForm({ ...stateForm, username: "Lambda", password: "School" });
   }, []);
 
   return (
