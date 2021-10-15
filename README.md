@@ -69,6 +69,8 @@ In this project, you will demonstrate your mastery of these skills by creating *
 
 * [x] In `Logout.js`, execute a http request to logout on mount. When the request is complete, the user's security token should be removed and the browser should redirect to the login page.
 
+### pass all MVP automated test (milestone-5)
+
 ### Advanced Testing
 > *Add the following tests within Article.test.js.*
 * [ ] Build a test that shows the `Article` component, given the correct props, can render without errors.
