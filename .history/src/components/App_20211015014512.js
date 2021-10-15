@@ -16,16 +16,14 @@ const App = () => {
     set_stateGlobal({ ...stateGlobal, token: input_token });
   };
   const cb_hasToken = () => {
-    // console.log("token = ", cb_getToken());
-    // console.log("return = ", stateGlobal.token !== "");
     return stateGlobal.token !== "";
   };
-  const cb_getToken = () => {
+  const cb_getToekn = () => {
     return stateGlobal.token;
   };
   return (
     <AppContainer>
-      <ContextObject.Provider value={{ cb_getToken, cb_setToken, cb_hasToken }}>
+      <ContextObject.Provider value={{ cb_getToekn, cb_setToken, cb_hasToken }}>
         <LambdaHeader />
         <Header />
         <RouteContainer>
@@ -36,11 +34,12 @@ const App = () => {
             <Route path="/login">
               <Login />
             </Route>
-            <PrivateRoute path="/view" component={View} />
-            <PrivateRoute path="/logout" component={Logout} />
-            <Route>
-              <Redirect path="/" />
-            </Route>
+            <PrivateRoute path="/view">
+              <View />
+            </PrivateRoute>
+            <PrivateRoute path="/logout">
+              <Logout />
+            </PrivateRoute>
           </Switch>
         </RouteContainer>
       </ContextObject.Provider>

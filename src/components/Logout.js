@@ -1,8 +1,16 @@
-import React from 'react';
+import React, { useContext } from "react";
+import ContextObject from "../context/context";
 
-const Logout = () => {        
-    return(<div></div>);
-}
+const Logout = () => {
+  const { cb_getToken, cb_hasToken } = useContext(ContextObject);
+
+  return (
+    <div>
+      <p>token = {cb_hasToken() ? cb_getToken() : "No Token"}</p>
+      <p>cb_hasToken() return {JSON.stringify(cb_hasToken())}</p>
+    </div>
+  );
+};
 
 export default Logout;
 

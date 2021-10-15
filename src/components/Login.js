@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styled from "styled-components";
 import loginService from "../services/loginServices";
 import { useHistory } from "react-router-dom";
+import ContextObject from "../context/context";
 
 const Login = () => {
   const initialState = { username: "", password: "", error: "" };
@@ -10,6 +11,7 @@ const Login = () => {
     set_stateForm({ ...stateForm, [event.target.name]: event.target.value });
   };
   const history = useHistory();
+  const { cb_setToken, cb_getToken, cb_hasToken } = useContext(ContextObject);
 
   const cb_onSubmit = (event) => {
     event.preventDefault();
@@ -19,11 +21,12 @@ const Login = () => {
       password: stateForm.password,
     })
       .then((res) => {
-        console.log("res = ", res);
+        // console.log("res = ", res);
+        cb_setToken(res.data.token);
         history.push("/view");
       })
       .catch((error) => {
-        console.log("error = ", error);
+        // console.log("error = ", error);
         set_stateForm({ ...stateForm, error: JSON.stringify(error) });
       });
     set_stateForm(initialState);
@@ -39,6 +42,7 @@ const Login = () => {
       <ModalContainer>
         <h1>Welcome to Blogger Pro</h1>
         <h2>Please enter your account information.</h2>
+        <p>token = {cb_hasToken() ? cb_getToken() : "No Token"}</p>
         <form onSubmit={cb_onSubmit}>
           <Label>
             Username :

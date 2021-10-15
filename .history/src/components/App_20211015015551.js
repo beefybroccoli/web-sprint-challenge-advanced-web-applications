@@ -16,8 +16,8 @@ const App = () => {
     set_stateGlobal({ ...stateGlobal, token: input_token });
   };
   const cb_hasToken = () => {
-    // console.log("token = ", cb_getToken());
-    // console.log("return = ", stateGlobal.token !== "");
+    console.log("token = ", cb_getToken());
+    console.log("should return ,")
     return stateGlobal.token !== "";
   };
   const cb_getToken = () => {
@@ -36,11 +36,12 @@ const App = () => {
             <Route path="/login">
               <Login />
             </Route>
-            <PrivateRoute path="/view" component={View} />
-            <PrivateRoute path="/logout" component={Logout} />
-            <Route>
-              <Redirect path="/" />
-            </Route>
+            <PrivateRoute path="/view">
+              <View />
+            </PrivateRoute>
+            <PrivateRoute path="/logout">
+              <Logout />
+            </PrivateRoute>
           </Switch>
         </RouteContainer>
       </ContextObject.Provider>
