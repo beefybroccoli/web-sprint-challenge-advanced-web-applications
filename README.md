@@ -64,7 +64,7 @@ In this project, you will demonstrate your mastery of these skills by creating *
 * [x] In `View.js`, complete `handleEdit` so that a http request is made that updates the passed in article. Set the editing state to false when the request is complete. After successfully deleting the article on the api, update local state to reflect these changes.
 
 
-### Logout Authentication
+### Logout Authentication (milestone-4)
 > *Add in the http requests needed to logout of the application.*
 
 * [x] In `Logout.js`, execute a http request to logout on mount. When the request is complete, the user's security token should be removed and the browser should redirect to the login page.
