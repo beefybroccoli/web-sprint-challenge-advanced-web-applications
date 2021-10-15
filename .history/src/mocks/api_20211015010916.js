@@ -1,5 +1,4 @@
-const { SERVER_PORT } = require("../constant/constant.js");
-// const SERVER_PORT = 5010;
+import { port } from "../constant/constant";
 const express = require("express");
 const Articles = require("./data");
 const cors = require("cors");
@@ -71,6 +70,6 @@ api.delete("/api/articles/:id", authenticator, (req, res) => {
   res.json(Articles.remove(req.params.id));
 });
 
-api.listen(SERVER_PORT, () => {
-  console.log(`listening on ${SERVER_PORT}`);
+api.listen(5000, () => {
+  console.log("listening on 5000");
 });

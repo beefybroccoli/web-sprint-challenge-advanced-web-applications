@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import loginService from "../services/loginServices";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
   const initialState = { username: "", password: "", error: "" };
@@ -7,23 +9,45 @@ const Login = () => {
   const cb_onChange = (event) => {
     set_stateForm({ ...stateForm, [event.target.name]: event.target.value });
   };
+  const history = useHistory();
 
   const cb_onSubmit = (event) => {
     event.preventDefault();
+    // console.log("stateForm = ", stateForm);
+    loginService({
+      username: stateForm.username,
+      password: stateForm.password,
+    })
+      .then((res) => {
+        console.log("res = ", res);
+        history.push("/view");
+      })
+      .catch((error) => {
+        console.log("error = ", error);
+        set_stateForm({ ...stateForm, error: JSON.stringify(error) });
+      });
+    set_stateForm(initialState);
   };
+
+  useEffect(() => {
+    //debugging code .............................................
+    set_stateForm({ ...stateForm, username: "Lambda", password: "School" });
+  }, []);
+
   return (
     <ComponentContainer>
       <ModalContainer>
         <h1>Welcome to Blogger Pro</h1>
         <h2>Please enter your account information.</h2>
-        <form>
+        <form onSubmit={cb_onSubmit}>
           <Label>
             Username :
             <input
               name="username"
               id="username"
               type="text"
-              vaue={stateForm.username}
+              value={stateForm.username}
+              onChange={cb_onChange}
               autoFocus
             />
           </Label>
@@ -33,7 +57,8 @@ const Login = () => {
               name="password"
               id="password"
               type="text"
-              vaue={stateForm.password}
+              value={stateForm.password}
+              onChange={cb_onChange}
             />
           </Label>
           <button id="submit">Submit</button>

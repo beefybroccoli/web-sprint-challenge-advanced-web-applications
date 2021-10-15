@@ -1,4 +1,4 @@
-export const SERVER_PORT = 5010;
+export const SERVER_PORT = 5000;
 export const API_URL_LOGIN = `http://localhost:${SERVER_PORT}/api/login`;
 export const API_URL_ARTICLES = `http://localhost:${SERVER_PORT}/api/articles`;
 export const API_URL_LOGOUT = `http://localhost:${SERVER_PORT}/api/logout`;

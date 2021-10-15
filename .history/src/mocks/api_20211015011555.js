@@ -1,5 +1,5 @@
-const { SERVER_PORT } = require("../constant/constant.js");
-// const SERVER_PORT = 5010;
+// const { SERVER_PORT } = require("../constant/constant.js");
+const SERVER_PORT = 5010;
 const express = require("express");
 const Articles = require("./data");
 const cors = require("cors");
