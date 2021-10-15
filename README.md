@@ -57,7 +57,7 @@ In this project, you will demonstrate your mastery of these skills by creating *
 
 * [x] In `View.js`, when the component mounts, use `articleService` to make an http request and add all articles to state.
 
-* [ ] In `View.js`, complete `handleDelete` so that a http request is made that deletes the article with the included id. After successfully deleting the article on the api, update local state to reflect these changes.
+* [x] In `View.js`, complete `handleDelete` so that a http request is made that deletes the article with the included id. After successfully deleting the article on the api, update local state to reflect these changes.
 
 * [ ] `editId` is passed into the `EditForm` component. In `EditForm.js`, make a http request on mount to get the article with the id `editId`. Save the result in state.
 
